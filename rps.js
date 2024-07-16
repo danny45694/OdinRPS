@@ -3,46 +3,59 @@
 let rock = "rock";
 let paper = "paper";
 let scissors = "scissors";
-let computerPlay = "";
 let playerScore = 0;
 let computerScore = 0;
-let getPlayerChoice = prompt("please enter rock, paper or scissors").toLowerCase();
-let computerChoice = Math.floor(Math.random() * 3);
 
-function playGame() {
-    function getComputerChoice(computerPlay) {
-        
+    function getComputerChoice() {
+    let computerChoice = Math.floor(Math.random() * 3);
         if (computerChoice == 0) {
-            return computerPlay = "rock";
+             computerChoice = "rock";
         }
             else if (computerChoice == 1) {
-                return computerPlay = "paper";
+                computerChoice = "paper";
         }
             else if (computerChoice == 2) {
-                return computerPlay = "scissors";
+                 computerChoice = "scissors";
         }
+        return computerChoice;
     }
-        return getComputerChoice;
+   computerPlay = getComputerChoice();
 
-    function playRound(computerPlay, getPlayerChoice) {
+
+ function playRound(playerScore, computerScore) {
+    while (playerScore <= 5 && computerScore <= 5) {
+        
+        let getPlayerChoice = prompt("please enter rock, paper, scissors").toLowerCase();
+        let computerPlay = getComputerChoice();
+        console.log(getPlayerChoice);
+        console.log(computerPlay);
         if (getPlayerChoice == computerPlay) {
-        return "It's a tie";
+        console.log("It's a tie");
         }
         else if (getPlayerChoice == "rock" && computerPlay == "scissors") {
         playerScore++;
-        return "Player Wins!";
+        console.log("Player Wins");
         }
         else if (getPlayerChoice == "paper" && computerPlay == "rock") {
-        playerScore++
-        return "Player Wins!"
+        playerScore++;
+        console.log("Player Wins!");
         }
         else if (getPlayerChoice == "scissors" && computerPlay == "paper") {
-        playerScore++
-        return "Player wins!"
+        playerScore++;
+        console.log("Player wins!")
         }
         else {
-        computerScore++
-        return "Computer wins!"
+        computerScore++;
+        console.log("Computer wins!")
+        }
+        if (playerScore > 5) {
+            console.log("Humanity Wins!");
+        }
+        else if (computerScore > 5) {
+            console.log("Oh no! AI Wins!");
         }
     }
 }
+
+
+playRound(playerScore, computerScore, computerPlay);
